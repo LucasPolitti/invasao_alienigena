@@ -9,7 +9,7 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
 
         #Sobe a imagem da espaçonave e obtém seu rect
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load('imagens/ship.bmp')
         self.rect = self.image.get_rect()
 
         #Começa cada espaçonave nova no centro inferior da tela

@@ -1,8 +1,7 @@
 import sys
-
 import pygame
-
-from configuracoes import Configuracoes 
+from configuracoes import Configuracoes
+from ship import Ship
 
 class InvasaoAlienigena:
 
@@ -21,25 +20,28 @@ class InvasaoAlienigena:
 
         pygame.display.set_caption("Alien Invasion")
 
-    def run_game(self):
+        self.ship = Ship(self)
 
+    def run_game(self):
         """Inicia o loop principal do jogo"""
         while True:
-
-            # Observa eventos de teclado e mouse
-            for event in pygame.event.get():
-
-                if event.type == pygame.QUIT:
-
-                    sys.exit()
-
-            #Redesenha a tela durante cada passagem pelo loop
-            self.screen.fill(self.configuracoes.bg_color)
-
-            #deixa a tela desenhada mais recente visível
-            pygame.display.flip()
-
+            self._check_events()
+            self._update_screen()            
             self.clock.tick(60)
+
+    def _check_events(self):
+        """Responde as teclas pressionadas e a eventos de mouse"""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+    def _update_screen(self):
+        """Atualiza as imagens na tela e muda para a nova tela"""
+        self.screen.fill(self.configuracoes.bg_color)
+        self.ship.blitme()
+
+        pygame.display.flip()
+
 
             
 if __name__ == '__main__':
