@@ -26,7 +26,8 @@ class InvasaoAlienigena:
         """Inicia o loop principal do jogo"""
         while True:
             self._check_events()
-            self._update_screen()            
+            self.ship.update
+            self._update_screen()  
             self.clock.tick(60)
 
     def _check_events(self):
@@ -34,6 +35,15 @@ class InvasaoAlienigena:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.ship.moving_right = False
+
+
+
 
     def _update_screen(self):
         """Atualiza as imagens na tela e muda para a nova tela"""
