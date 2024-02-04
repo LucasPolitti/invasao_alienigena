@@ -15,13 +15,16 @@ class Ship:
         #Começa cada espaçonave nova no centro inferior da tela
         self.rect.midbottom = self.screen_rect.midbottom
 
-        #Flag de movimento; começa com uma espaçonave que não está se movendo
+        #Flags de movimento; começa com uma espaçonave que não está se movendo
         self.moving_right = False
+        self.moving_left = False
 
     def update(self):
         """Atualiza a posição da espaçonave com base na flag de movimento"""
         if self.moving_right:
             self.rect.x += 4
+        if self.moving_left:
+            self.rect.x -= 4
 
     def blitme(self):
         """Desenha a espaçonave em sua localização atual"""
