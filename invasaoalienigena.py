@@ -7,20 +7,17 @@ class InvasaoAlienigena:
 
     """Classe geral para gerenciar ativos e comportamento do jogo"""
     def __init__(self):
-
         """Inicializa o jogo e cria recursos do jogo"""
         pygame.init()
-
         self.clock = pygame.time.Clock()
-
         self.configuracoes = Configuracoes()
 
-        self.screen = pygame.display.set_mode(
-            (self.configuracoes.screen_width, self.configuracoes.screen_height))
-
+        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        self.configuracoes.screen_width = self.screen.get_rect().width
+        self.configuracoes.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion")
-
         self.ship = Ship(self)
+
 
     def run_game(self):
         """Inicia o loop principal do jogo"""
